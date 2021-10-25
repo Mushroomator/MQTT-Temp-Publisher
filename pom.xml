@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Coordinates -->
+    <groupId>de.othr</groupId>
+    <artifactId>MqttTempPublisher</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <!-- Information on the project and developers -->
+    <name>MQTT Temp Publisher</name>
+    <description>
+        Simple MQTT publisher which collects dummy temperature data and publishes it to a MQTT message broker.
+    </description>
+    <url>https://github.com/Mushroomator/MQTT-Temp-Publisher</url>
+    <developers>
+        <developer>
+            <name>Thomas Pilz</name>
+            <email>topi50@gmx.de</email>
+            <url>https://github.com/Mushroomator</url>
+            <organization>OTH Regensburg</organization>
+            <organizationUrl>https://www.oth-regensburg.de/</organizationUrl>
+        </developer>
+    </developers>
+
+    <!-- License information -->
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <!-- Information of source control system used -->
+    <scm>
+        <connection>scm:git:https://github.com/Mushroomator/MQTT-Temp-Publisher.git</connection>
+        <developerConnection>scm:git:ssh://github.com/Mushroomator/MQTT-Temp-Publisher.git</developerConnection>
+        <url>https://github.com/Mushroomator/MQTT-Temp-Publisher/tree/main</url>
+    </scm>
+
+    <properties>
+        <!-- Set compile options -->
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Dependency versions -->
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <!-- Set path for .jar -->
+        <path-to-mqtt_kpi_publisher-jar>/home/tom/.m2/repository/de/othr/MqttKpiPublisher/0.1/MqttKpiPublisher-0.1-jar-with-dependencies.jar</path-to-mqtt_kpi_publisher-jar>
+    </properties>
+
+    <dependencies>
+
+        <!-- IMPORTANT!
+        You must download the .jar from https://github.com/Mushroomator/MQTT-KPI-Publisher and
+        change this path to wherever the .jar is on your machine -->
+        <dependency>
+            <groupId>de.othr</groupId>
+            <artifactId>MqttKpiPublisher</artifactId>
+            <version>0.1</version>
+            <scope>system</scope>
+            <systemPath>${path-to-mqtt_kpi_publisher-jar}</systemPath>
+        </dependency>
+
+        <!-- Maven Assembly Plugin which creates a single executable jar -->
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-assembly-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <version>${maven-assembly-plugin.version}</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Let Maven create a single .jar file with manifest -->
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>de.othr.mqtt_temp_publisher.MqttTempPublisher</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
