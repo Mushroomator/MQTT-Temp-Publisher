@@ -64,8 +64,8 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-          ${{ env.GH_REGISTRY }}/${{ env.GH_USERNAME }}/${{ env.GH_IMAGE_NAME }}
-          ${{ env.DH_REGISTRY }}/${{ env.DH_USERNAME }}/${{ env.DH_IMAGE_NAME }}
+            ${{ env.GH_REGISTRY }}/${{ env.GH_USERNAME }}/${{ env.GH_IMAGE_NAME }}
+            ${{ env.DH_REGISTRY }}/${{ env.DH_USERNAME }}/${{ env.DH_IMAGE_NAME }}
           # Set default labels to correct values
           labels: |
             org.opencontainers.image.title=MQTT Temperature Publisher
