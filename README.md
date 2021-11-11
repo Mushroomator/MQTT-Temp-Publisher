@@ -1,4 +1,5 @@
 ![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
+[![Create and publish Docker image](https://github.com/Mushroomator/MQTT-Temp-Publisher/actions/workflows/createAndPushDockerImage.yaml/badge.svg)](https://github.com/Mushroomator/MQTT-Temp-Publisher/actions/workflows/createAndPushDockerImage.yaml)
 
 # MQTT Temp Publisher
 Simple MQTT publisher which collects dummy temperature data and publishes it to a MQTT message broker. This serves as a demonstration on how to use the [MQTT KPI Publisher](https://github.com/Mushroomator/MQTT-Temp-Publisher) mini-framework and as a test container to show the application stack defined in [MQTT KPI Collection Project](https://github.com/Mushroomator/MQTT-KPI-Collection-Project) working.

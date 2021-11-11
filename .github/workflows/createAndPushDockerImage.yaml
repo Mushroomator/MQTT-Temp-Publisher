@@ -9,7 +9,7 @@
 # Date: 2021/10/25
 # Author: Thomas Pilz
 # ---------------------------------------------------------------------------------------
-name: Create and publish Docker image for JSON Schema Containment Checker
+name: Create and publish Docker image
 
 
 on:
@@ -78,7 +78,6 @@ jobs:
           tags: |
             type=sha,format=short,prefix=
             latest
-          password: ${{ secrets.DH_PASSWORD }}
           # use Github Token created for each workflow run to authenticate to Github Container Registry
           github-token: ${{ github.token }}
 
