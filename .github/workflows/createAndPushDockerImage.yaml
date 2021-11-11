@@ -25,7 +25,7 @@ env:
   DH_USERNAME: thomaspilz
   DH_REGISTRY: docker.io
   # Docker image name
-  IMAGE_NAME: mqtt-temp-monitor
+  IMAGE_NAME: mqtt-temp-publisher
 
 jobs:
   build-and-push-image:

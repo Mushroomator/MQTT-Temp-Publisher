@@ -11,15 +11,17 @@ Simple MQTT publisher which collects dummy temperature data and publishes it to 
   - [Table of Contents](#table-of-contents)
   - [Getting started](#getting-started)
   - [More information](#more-information)
+  - [Docker image](#docker-image)
   - [License](#license)
 
 ## Getting started
 There is a Docker image available to start the *MQTT Temp Publisher* which you can run with one simple command:
 ```bash
-docker run -d thomaspilz/mqtt-temp-publisher:$COMMIT_SHA \
+docker run -d \
   -e MQTT_MSG_BROKER_URL=tcp://mosquitto:1883 \
   -e MQTT_CLIENT_ID=mqtt-temp-publisher \
-  -e MQTT_TOPIC=/kpi/temperature
+  -e MQTT_TOPIC=/kpi/temperature \
+  thomaspilz/mqtt-temp-publisher:$COMMIT_SHA
 ```
 `$COMMIT_SHA` must be replaced with the first seven characters of the corresponding Github commit hash.
 Details on the environment variables (-e option) can be found in the README of the [MQTT KPI Publisher](https://github.com/Mushroomator/MQTT-Temp-Publisher).
@@ -27,6 +29,9 @@ Details on the environment variables (-e option) can be found in the README of t
 ## More information
 This application makes use of [MQTT KPI Publisher](https://github.com/Mushroomator/MQTT-Temp-Publisher). 
 For more information on the implementation, environment variables etc. please check out the documentation there.
+
+## Docker image
+Every push on the main branch triggers an Github Action workflow which will build a Docker image and push it to [DockerHub]() as well as [Github Container Registry]().
 
 ## License
 Copyright 2021 Thomas Pilz
