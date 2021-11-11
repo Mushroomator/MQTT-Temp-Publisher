@@ -1,7 +1,7 @@
 # ---------------------------------------------------------------------------------------
 # CI/ CD Pipeline: MQTT Temperature Publisher
 #
-# Description: Builds a Docker image for MQTT Temperature Publisherr and pushes
+# Description: Builds a Docker image for MQTT Temperature Publisher and pushes
 #              it to Github container registry (ghcr.io) as well as Dockerhub.
 #              All images will by default be named according to the following pattern:
 #               {container registry}/{username}/mqtt-temp-monitor:{short commit sha}
@@ -72,8 +72,8 @@ jobs:
             org.opencontainers.image.description=Simple MQTT publisher which collects dummy temperature data and publishes it to a MQTT message broker.
             org.opencontainers.image.vendor=OTH Regensburg
             org.opencontainers.image.licenses=Apache-2.0
-            org.opencontainers.image.url=https://github.com/Mushroomator/MQTT-Temp-Publisher/pkgs/container/mqtt-temp-monitor
-            org.opencontainers.image.source=https://github.com/Mushroomator/MQTT-Temp-Publisher
+            org.opencontainers.image.url=https://github.com/${{ github.repository }}/pkgs/container/${{ env.IMAGE_NAME }}
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
           # use short SHA without a prefix as tag and tag every new image with the latest tag
           tags: |
             type=sha,format=short,prefix=

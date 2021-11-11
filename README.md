@@ -1,36 +1,27 @@
 ![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 
-# MQTT-Temp-Publisher
-Simple MQTT publisher which collects dummy temperature data and publishes it to a MQTT message broker. This serves as a demonstration on how to use the [MQTT KPI Publisher](https://github.com/Mushroomator/MQTT-Temp-Publisher) mini-framework.
+# MQTT Temp Publisher
+Simple MQTT publisher which collects dummy temperature data and publishes it to a MQTT message broker. This serves as a demonstration on how to use the [MQTT KPI Publisher](https://github.com/Mushroomator/MQTT-Temp-Publisher) mini-framework and as a test container to show the application stack defined in [MQTT KPI Collection Project](https://github.com/Mushroomator/MQTT-KPI-Collection-Project) working.
+
+> This repository is part of the [MQTT KPI Collection Project](https://github.com/Mushroomator/MQTT-KPI-Collection-Project).
 
 ## Table of Contents
-- [MQTT-Temp-Publisher](#mqtt-temp-publisher)
+- [MQTT Temp Publisher](#mqtt-temp-publisher)
   - [Table of Contents](#table-of-contents)
   - [Getting started](#getting-started)
-  - [Docker image](#docker-image)
   - [More information](#more-information)
   - [License](#license)
 
 ## Getting started
-Make sure you have the .jar for the [MQTT KPI Publisher](https://github.com/Mushroomator/MQTT-Temp-Publisher) downloaded as this is a required dependency. Then add a dependency referencing the downloaded .jar to your pom.xml as follows:
-```xml
-<properties>
-    <!-- Set path for .jar as a property -->
-    <path-to-mqtt_kpi_publisher-jar>/home/tom/.m2/repository/de/othr/MqttKpiPublisher/0.1/MqttKpiPublisher-0.1-jar-with-dependencies.jar</path-to-mqtt_kpi_publisher-jar>
-</properties>
-
-<!-- use the property when defining the dependency -->
-<dependency>
-    <groupId>de.othr</groupId>
-    <artifactId>MqttKpiPublisher</artifactId>
-    <version>0.1</version>
-    <scope>system</scope>
-    <systemPath>${path-to-mqtt_kpi_publisher-jar}</systemPath>
-</dependency>
+There is a Docker image available to start the *MQTT Temp Publisher* which you can run with one simple command:
+```bash
+docker run -d thomaspilz/mqtt-temp-publisher:$COMMIT_SHA \
+  -e MQTT_MSG_BROKER_URL=tcp://mosquitto:1883 \
+  -e MQTT_CLIENT_ID=mqtt-temp-publisher \
+  -e MQTT_TOPIC=/kpi/temperature
 ```
-You may want to run `mvn clean install` in your project root to let Maven build the project as a wholeif the IDE does not recognize the dependency immediately.
-
-## Docker image
+`$COMMIT_SHA` must be replaced with the first seven characters of the corresponding Github commit hash.
+Details on the environment variables (-e option) can be found in the README of the [MQTT KPI Publisher](https://github.com/Mushroomator/MQTT-Temp-Publisher).
 
 ## More information
 This application makes use of [MQTT KPI Publisher](https://github.com/Mushroomator/MQTT-Temp-Publisher). 

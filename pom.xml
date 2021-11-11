@@ -49,20 +49,20 @@
         <!-- Dependency versions -->
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
         <!-- Set path for .jar -->
-        <path-to-mqtt_kpi_publisher-jar>/home/tom/.m2/repository/de/othr/MqttKpiPublisher/0.1/MqttKpiPublisher-0.1-jar-with-dependencies.jar</path-to-mqtt_kpi_publisher-jar>
+        <path-to-mqtt_kpi_publisher-jar>${project.basedir}/MqttKpiPublisher-0.1-jar-with-dependencies.jar</path-to-mqtt_kpi_publisher-jar>
     </properties>
 
     <dependencies>
 
         <!-- IMPORTANT!
         You must download the .jar from https://github.com/Mushroomator/MQTT-KPI-Publisher and
-        change this path to wherever the .jar is on your machine -->
+        install it into your local Maven repository using
+        mvn install:install-file -Dfile=../MQTT-KPI-Publisher/target/MqttKpiPublisher-0.1-jar-with-dependencies.jar -DgroupId=de.othr -DartifactId=MqttKpiPublisher -Dversion=0.1 -Dpackaging=jar -DgeneratePom=true
+        -->
         <dependency>
             <groupId>de.othr</groupId>
             <artifactId>MqttKpiPublisher</artifactId>
             <version>0.1</version>
-            <scope>system</scope>
-            <systemPath>${path-to-mqtt_kpi_publisher-jar}</systemPath>
         </dependency>
 
         <!-- Maven Assembly Plugin which creates a single executable jar -->
@@ -75,7 +75,7 @@
 
 
     </dependencies>
-
+    
     <build>
         <plugins>
             <plugin>
@@ -95,6 +95,9 @@
                             <addClasspath>true</addClasspath>
                             <mainClass>de.othr.mqtt_temp_publisher.MqttTempPublisher</mainClass>
                         </manifest>
+                        <manifestEntries>
+                            <Multi-Release>true</Multi-Release>
+                        </manifestEntries>
                     </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
