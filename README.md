@@ -31,7 +31,7 @@ This application makes use of [MQTT KPI Publisher](https://github.com/Mushroomat
 For more information on the implementation, environment variables etc. please check out the documentation there.
 
 ## Docker image
-Every push on the main branch triggers an Github Action workflow which will build a Docker image and push it to [DockerHub]() as well as [Github Container Registry]().
+Every push on the main branch triggers an Github Action workflow which will build a Docker image and push it to [DockerHub](https://hub.docker.com/repository/docker/thomaspilz/mqtt-temp-publisher) as well as [Github Container Registry](https://github.com/Mushroomator/MQTT-Temp-Publisher/pkgs/container/mqtt-temp-publisher). Currently only the iamge on DockerHub is publicly available without authentication.
 
 ## License
 Copyright 2021 Thomas Pilz
