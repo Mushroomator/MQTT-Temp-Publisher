@@ -8,7 +8,7 @@
 #--------------
 # Build from eclipse temurin as this has all the necessary tools to build a small image for Java applications
 FROM eclipse-temurin:16 as builder
-ENV MAVEN_VER=3.8.3 \
+ENV MAVEN_VER=3.8.4 \
     MAVEN_HOME=/opt/maven
 
 # Maven coordinates for dependency to MQTT KPI Publisher
