@@ -17,7 +17,7 @@ ENV DEP_GROUP_ID=de.othr \
     DEP_VERSION=0.1
 ENV DEP_JAR_NAME=${DEP_ART_ID}-${DEP_VERSION}-jar-with-dependencies.jar
 # Github release tag (=short commit hash) of MQTT KPI Publisher
-ENV MQTT_KPI_PUBLISHER_RELEASE_TAG=d7a7aae1
+ENV MQTT_KPI_PUBLISHER_RELEASE_TAG=35c4bfaf
 
 # Maven coordinates for .jar to be built    
 ENV BUILD_GROUP_ID=de.othr \
